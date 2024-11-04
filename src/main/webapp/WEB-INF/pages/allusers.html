@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>All Users</title>
+</head>
+<body>
+<h2>All Users</h2>
+<br>
+<table>
+    <thead>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>City</th>
+    <th>UpdateUser</th>
+    <th>DeleteUser</th>
+    </thead>
+    <tbody>
+
+    <tr th:each="user : ${allUsers}">
+        <td th:utext="${user.name}"></td>
+        <td th:utext="${user.surname}"></td>
+        <td th:utext="${user.city}"></td>
+        <td>
+            <form th:action="@{/updateInfo}">
+                <button type="submit" th:name="usrId" th:value="${user.id}">Update</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/deleteUser}">
+                <button type="submit" th:name="usrId" th:value="${user.id}">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<input type="button" value="AddUser"
+       onclick="window.location.href = 'addNewUser'">
+</body>
+</html>
