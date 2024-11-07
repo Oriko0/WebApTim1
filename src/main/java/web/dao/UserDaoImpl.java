@@ -22,11 +22,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void saveUser(User user) {
-        if (user.getId() == 0) {
-            entityManager.persist(user);
-        }else{
-            entityManager.merge(user);
-        }
+        entityManager.persist(user);
     }
 
     @Override
@@ -37,6 +33,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void deleteUser(int id) {
         entityManager.remove(entityManager.find(User.class, id));
+    }
+
+    @Override
+    public void updateInfo(User user) {
+        entityManager.merge(user);
     }
 
 }

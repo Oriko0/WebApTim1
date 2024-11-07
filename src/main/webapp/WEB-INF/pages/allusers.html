@@ -21,7 +21,7 @@
         <td th:utext="${user.surname}"></td>
         <td th:utext="${user.city}"></td>
         <td>
-            <form th:action="@{/updateInfo}">
+            <form th:action="@{/addNewUpdateUser}">
                 <button type="submit" th:name="usrId" th:value="${user.id}">Update</button>
             </form>
         </td>

@@ -33,11 +33,16 @@ public class UserController {
         return "redirect:/";
 
     }
-    @GetMapping("/updateInfo")
-    public String updateUser(@RequestParam("usrId") int id, Model model) {
+    @GetMapping("/addNewUpdateUser")
+    public String addNewUpdateUser(@RequestParam("usrId") int id, Model model) {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
-        return "user-info";
+        return "user-update";
+    }
+    @GetMapping("/updateInfo")
+    public String updateInfo(@ModelAttribute("user") User user) {
+        userService.updateInfo(user);
+        return "redirect:/";
     }
     @GetMapping("/deleteUser")
     public String deleteUser(@RequestParam("usrId") int id) {
